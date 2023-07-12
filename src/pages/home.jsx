@@ -69,21 +69,23 @@ export const Home = () => {
         </div>
       </div>
       <div className="mx-28">
-        <div className="rounded-lg shadow-2xl flex flex-col justify-center items-center py-5 mt-8">
-          <h1 className="text-4xl mb-4">
-            Good Morning Mr. {userData?.user?.firstName}{" "}
-            {userData?.user?.lastName}
-          </h1>
-          <h2 className="text-2xl mb-4">
-            Here is your phone number: {userData?.user?.mobile}
-          </h2>
-          <p className="text-xl mb-4">Welcome to my page</p>
-          <img
-            src={getPreSignedURL(userData.user.profilePicture)}
-            alt="profile"
-            className="w-[300px] h-[300px]"
-          />
-        </div>
+        {userData && userData.user && (
+          <div className="rounded-lg shadow-2xl flex flex-col justify-center items-center py-5 mt-8">
+            <h1 className="text-4xl mb-4">
+              Good Morning Mr. {userData?.user?.firstName}{" "}
+              {userData?.user?.lastName}
+            </h1>
+            <h2 className="text-2xl mb-4">
+              Here is your phone number: {userData?.user?.mobile}
+            </h2>
+            <p className="text-xl mb-4">Welcome to my page</p>
+            <img
+              src={getPreSignedURL(userData.user.profilePicture)}
+              alt="profile"
+              className="w-[300px] h-[300px]"
+            />
+          </div>
+        )}
         <div className="flex items-center justify-center">
           <div
             onClick={() => setShow(!show)}
@@ -128,6 +130,6 @@ export const Home = () => {
           </div>
         )}
       </div>
-    </>
-  );
+    </>
+  );
 };
